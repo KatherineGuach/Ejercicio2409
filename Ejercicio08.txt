@@ -1,0 +1,77 @@
+package ejercicio8;
+
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
+
+//EJERCICIO 8:
+//Pedir 2 fechas por teclado y decir cuál es mayor
+
+public class Ejercicio08 {
+
+	public static void main(String[] args) {
+		
+		Scanner teclado = new Scanner(System.in);
+
+		
+		//Introducimos la FECHA 1.
+        System.out.println("Introduzca fecha 1 con formato dd-mm-yyyy");      
+        String fecha1 = teclado.nextLine();
+        //Con el siguiente código transformamos la fecha introducida que es tipo String, a tipo Date
+        SimpleDateFormat fecha1F = new SimpleDateFormat("dd-MM-yyyy");
+        java.util.Date testDate1 = null;
+        String date1 = fecha1;
+        
+        //Introducimos la FECHA 2.
+        System.out.println("Introduzca fecha 2 con formato dd-mm-yyyy");       
+        String fecha2 = teclado.nextLine(); 
+        //Con el siguiente código transformamos la fecha introducida que es tipo String, a tipo Date
+        SimpleDateFormat fecha2F = new SimpleDateFormat("dd-MM-yyyy");       
+        java.util.Date testDate2 = null;
+        String date2 = fecha2;
+        System.out.println("");
+        
+        try{
+            testDate1 = fecha1F.parse(date1); //Esto tiene formato dd-MMM-yyyy HH:mm:ss.SS
+            //Cambiamos a formato local para poder obtener el día, el mes y el año de forma individual.
+            LocalDate localDate1 = testDate1.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            //Transformamos a formato dd-MM-yyyy
+            DateTimeFormatter miFormato1 = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+    		String formateada1 = localDate1.format(miFormato1);
+    		System.out.println("Fecha 1: " + formateada1);
+            int day1   = localDate1.getDayOfMonth();
+            int month1 = localDate1.getMonthValue();
+            int year1  = localDate1.getYear();          
+            
+            
+            testDate2 = fecha2F.parse(date2); //Esto tiene formato dd-MMM-yyyy HH:mm:ss.SS
+            //Cambiamos a formato local para poder obtener el día, el mes y el año de forma individual.
+            LocalDate localDate2 = testDate2.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            //Transformamos a formato dd-MM-yyyy
+            DateTimeFormatter miFormato2 = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+    		String formateada2 = localDate2.format(miFormato2);
+    		System.out.println("Fecha 2: " + formateada2);
+            int day2   = localDate2.getDayOfMonth();
+            int month2 = localDate2.getMonthValue();
+            int year2  = localDate2.getYear();  
+            
+            System.out.println("");
+            
+           //Comparamos las dos fechas y deducimos cuál es la mayor pasando las fechas a días.          
+            int diasFecha1 = day1 + 30*month1 + year1*365;
+            int diasFecha2 = day2 + 30*month2 + year2*365;
+            
+            if (diasFecha1 <= diasFecha2) {
+            	System.out.println("La fecha 2 es mayor que la fecha 1.");
+            }else {
+            	System.out.println("La fecha 1 es mayor que la fecha 2");
+            }
+        } catch (Exception e){ System.out.println("invalid format");}
+        
+
+        teclado.close();
+	}
+
+}

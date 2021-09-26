@@ -1,0 +1,92 @@
+package ejercicio05;
+
+public class Ejercicio05 {
+	
+	//EJERCICIO 5:
+	//Implementar una interface con tres métodos
+
+	public static void main(String[] args) {
+
+		interface Hospital { //Creo la interfaz de Hospital
+			public void personalName(); //Este método implementa el nombre de la persona que trabaja en el hospital
+			public void departamento(); //Este método implementa el departamento general al que pertenece
+			public void especialidad();  //Este método implmenta la especialidad del departamento al que pertenece
+		}
+		
+		//A continuación comprabamos con ejemplos la implementación del interfaz y los tres métodos creados.
+		
+		//Personal 1.
+		class Pers1 implements Hospital {
+			public void personalName() {
+				System.out.println("Nombre del personal:");
+				System.out.println("  Sergio Pérez");
+			}
+			public void departamento() {
+				System.out.println("Departamento:");
+				System.out.println("  Medicina");
+			}
+			public void especialidad() {
+				System.out.println("Especialidad: ");
+				System.out.println("  Cardiólogía");
+				
+			}
+		}
+
+		Pers1 empleado1 = new Pers1();
+		empleado1.personalName();
+		empleado1.departamento();
+		empleado1.especialidad();
+		
+		System.out.println("");
+		//Personal 2.
+		class Pers2 implements Hospital {
+			public void personalName() {
+				System.out.println("Nombre del personal:");
+				System.out.println("  Ana Díaz");
+			}
+			public void departamento() {
+				System.out.println("Departamento:");
+				System.out.println("  Cirugía");
+			}
+			public void especialidad() {
+				System.out.println("Especialidad: ");
+				System.out.println("  Oftalmología");
+				
+			}
+		}
+
+		Pers2 empleado2 = new Pers2();
+		empleado2.personalName();
+		empleado2.departamento();
+		empleado2.especialidad();
+		
+		
+		System.out.println("");
+		//Personal 3.
+		class Pers3 implements Hospital {
+			public void personalName() {
+				System.out.println("Nombre del personal:");
+				System.out.println("  Lucía López");
+			}
+			public void departamento() {
+				System.out.println("Departamento:");
+				System.out.println("  Pediatría");
+			}
+			public void especialidad() {
+				System.out.println("Especialidad: ");
+				System.out.println("  Neonatología");
+
+			}
+		}
+
+		Pers3 empleado3 = new Pers3();
+		empleado3.personalName();
+		empleado3.departamento();
+		empleado3.especialidad();
+
+	
+			
+
+	}
+
+}

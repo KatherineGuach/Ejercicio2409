@@ -1,0 +1,98 @@
+package ejercicio03;
+
+
+//Importamos las librerías necesarias
+import java.text.ParseException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
+
+public class Ejercicio03 {
+	
+	//EJERCICIO 3:
+	//Ingresar tu fecha de nacimiento y mostrar como resultado cuantos días has vivido
+
+	public static void main(String[] args) throws ParseException {
+		
+		Scanner teclado = new Scanner(System.in);
+		
+		//Primero obtenemos la fecha actual, la cual se va a utilizar para calcula a día de hoy, los dias vividos
+		LocalDate fecha = LocalDate.now();
+		int diaActual = fecha.getDayOfMonth(); //Obtenemos el día actual
+		int mesActual = fecha.getMonthValue(); //Obtenemos el mes actual
+		int añoActual = fecha.getYear(); //Obtenemos el eño actual
+		
+		//Introducimos los datos de la fecha de nacimiento por pantalla	
+		System.out.println("Introduce tu fecha de nacimiento: ");
+		System.out.println("Día 1-31: ");
+		int day;
+		day = teclado.nextInt();
+		System.out.println("Mes 1-12: ");
+		int month;
+		month = teclado.nextInt();
+		System.out.println("Año: ");
+		int year;
+		year = teclado.nextInt();
+		
+		
+		//Calculamos los días que habría que sumar por los años bisiestos
+		int bisiestos = 0;
+		if (month < 2) {
+			bisiestos = (añoActual - year)/4;
+			System.out.println("años bisiestos: " + bisiestos);
+		}else{
+			bisiestos = (añoActual - year)/4 + 1;
+			System.out.println("años bisiestos: " + bisiestos);
+		}
+		
+		//Calculamos el número días vividos hasta el día actual
+		int diasVividos = (diaActual-day) + (mesActual - month)*30 + (añoActual-year)*365 + bisiestos;
+		
+		//Pasamos el mes de formato número a formato nombre
+		String mesName = null;
+		switch (month) {
+		case 1: mesName = "enero"; break;
+		case 2: mesName = "febrero"; break;
+		case 3: mesName = "marzo"; break;
+		case 4: mesName = "abril"; break;
+		case 5: mesName = "mayo"; break;
+		case 6: mesName = "junio"; break;
+		case 7: mesName = "julio"; break;
+		case 8: mesName = "agosto"; break;
+		case 9: mesName = "septiembre"; break;
+		case 10: mesName = "octubre"; break;
+		case 11: mesName = "noviembre"; break;
+		case 12: mesName = "diciembre"; break;
+		default: System.out.println("No es una opción válida");
+		}
+		
+		//Escribimos la fecha de cumpleaños en una sola fecha
+		String fechaInt = day + "-" + mesName + "-" + year;
+		//SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");  NO ME SALE
+		//Date fechaFormateada = (Date) formato.parse(fechaInt); 
+		
+		System.out.println("");
+		System.out.println("*****************************************************");
+		System.out.println("¿Sabes cuántos días has vivido hasta hoy?");
+		System.out.println("");
+		
+		//Para mostrar la fecha actual en formato dd-MMM(nombre del mes)-yyyy
+		//la mostramos por pantalla
+		DateTimeFormatter miFormato2 = DateTimeFormatter.ofPattern("dd-MMM-yyyy");
+		String formateada2 = fecha.format(miFormato2);
+		System.out.println("La fecha de hoy es: " + formateada2);
+		System.out.println("");
+		//Mostramos por pantalla la fecha de cumpleaños introducida
+		System.out.println("Tu fecha de nacimiento es: " + fechaInt);
+		System.out.println("");
+		
+		//Mostramos por pantalla los días vividos hasta el día actual
+		System.out.println("Has vivido: " + diasVividos + " días.");
+		
+		
+		teclado.close();
+
+
+	}
+
+}

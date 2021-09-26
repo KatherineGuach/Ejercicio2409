@@ -1,0 +1,72 @@
+package ejercicioGrupal01;
+
+//EJERCICIO 2: 
+//Modificar el Ejercicio del cajero automático y crear diferentes clientes y cuentas asociadas a esos clientes, 
+//utilizando listas de arreglos. Preguntar si se desea crear mas cuentas
+
+import java.util.List;
+import java.util.Scanner;
+import java.util.LinkedList;
+
+
+
+public class Principal {
+
+	public static void main(String[] args) {
+		
+		Scanner teclado = new Scanner(System.in);
+
+		int añadir;
+		String numeroCuentaNew;
+		String titularCuentaNew;
+		float saldoCuentaNew;
+		float interesCuentaNew;
+		
+		List<Cuenta> listaClientes = new LinkedList<>();
+		
+		System.out.println("¿Desea añadir un nuevo cliente? 1 si lo desea, 0 en caso contrario.");
+		añadir = teclado.nextInt();
+		
+		while(añadir == 1) {
+			System.out.println("Introduzca el número de cuenta:");
+			numeroCuentaNew = teclado.next();
+			System.out.println("Introduzca el titular de la cuenta:");
+			titularCuentaNew = teclado.next();
+			System.out.println("Introduzca el saldo de la cuenta:");
+			saldoCuentaNew = teclado.nextFloat();
+			System.out.println("Introduzca el interés anual de la cuenta:");
+			interesCuentaNew = teclado.nextFloat();
+			
+			listaClientes.add(new Cuenta(numeroCuentaNew,titularCuentaNew,saldoCuentaNew,interesCuentaNew));
+			
+			System.out.println("¿Desea añadir un nuevo cliente? 1 si lo desea, 0 en caso contrario.");
+			añadir = teclado.nextInt();
+		}
+		
+		for (Cuenta cliente :listaClientes) {
+			System.out.println("Nª cuenta: " + cliente.getNumeroCuenta());
+			System.out.println("Titular cuenta: " + cliente.getTitularCuenta());
+			System.out.println("Saldo cuenta: " + cliente.getSaldoCuenta());
+			System.out.println("Interés anual de cuenta: " + cliente.getInteresCuenta());
+		}
+		
+		
+		/**
+		Login login = new Login();
+		String usuario;
+		String clave;
+		
+		System.out.println("Por favor, introduzca su usuario.");
+		usuario = teclado.next();
+		
+		System.out.println("Por favor, instroduzca su clave.");
+		clave = teclado.next();
+		login.loguearse(usuario, clave);
+		*/
+			
+		
+
+		teclado.close();
+	}
+
+}

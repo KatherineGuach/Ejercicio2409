@@ -1,0 +1,19 @@
+package ejercicio01;
+
+public class Ejercicio01 {
+	
+	//EJERCICIO 1
+	//Utilice la recursividad para sumar todos los números entre 7 y 15
+	
+	public static void main(String[] args) {	
+		int resultado = suma(7);
+		System.out.println(resultado);
+	}
+	
+	public static int suma(int x) {
+		if (x >= 7 && x <= 15) {
+			return x + suma(x+1);
+		} else
+			return 0;
+	}
+}

@@ -1,0 +1,90 @@
+package ejercicio06;
+
+//Importamos las librerías necesarias para linkear las clase, crear listas e introducir por pantalla
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Scanner;
+
+
+//Creamos la clase que va a heredar los atributos de la clase Cliente.
+public class MainClientes extends Cliente {
+	
+	//Constructor
+	public MainClientes(String nombre, String apellido1, String apellido2, String movil, String email) {
+		super(nombre,apellido1,apellido2,movil,email);
+	}
+
+public static void main(String[] args) {
+	
+	Scanner teclado = new Scanner(System.in);
+	
+	//Lista en la que se van a guardar los datos del cliente y que va a tener Link a la clase Cliente
+	List<Cliente> listaClientes = new LinkedList<Cliente>();
+	System.out.println("¡ATENCIÓN! Puede agragar hasta 10 clientes como máximo.");
+	System.out.println("");
+	
+	int cont=0;  //Inicializamos la variable cont, necesaria para controlar el número de clientes introducidos
+	int agregar; //Variable que servirá para agregar o no clientes.
+	
+	//Con el siguiente bucle se van a ir introduciento los clientes
+	while(cont < 10) {
+		System.out.println("CLIENTE " + (cont+1));
+		System.out.println("Introduzca nombre del cliente:");
+		String nombre = teclado.next();
+		System.out.println("Introduzca el primer apellido del cliente:");
+		String apellido1 = teclado.next();
+		System.out.println("Introduzca el segundo apellido del cliente:");
+		String apellido2 = teclado.next();
+		System.out.println("Introduzca el móvil del cliente:");
+		String movil = teclado.next();
+		System.out.println("Introduzca el email del cliente:");
+		String email = teclado.next();
+		
+		//Cliente nuevo se agregará en la lista de clientes 
+		listaClientes.add(new Cliente(nombre,apellido1,apellido2,movil,email));
+		
+		//Con el siguiente código se añadirá o no un nuevo cliente a la lista.
+		System.out.println("Si desea agregar más clientes pulse 1. Si no, pulse 0.");
+		agregar = teclado.nextInt();
+		if (agregar == 1) {
+			cont=cont+1;
+			System.out.println("");
+			System.out.println("Ha agregado ya " + cont + " clientes.");
+			System.out.println("");
+		}else if(agregar == 1 && cont==10) {
+			System.out.println("");
+			System.out.println("Ya no puede agregar más clientes");
+			System.out.println("");
+		}else {
+			cont=10;
+			System.out.println("");
+			System.out.println("Ya no se agregan más clientes.");
+			System.out.println("");
+		}
+		if (cont == 9) {
+			System.out.println("");
+			System.out.println("¡ATENCIÓN! Sólo puede añadir 1 cliente más.");
+			System.out.println("");
+		}
+	}
+	
+	teclado.close();
+	
+	//El siguiente código sirve para mostrar por pantalla los datos de los clientes.
+	int numCliente=0;
+	for (Cliente cli : listaClientes) {
+		System.out.println("---------------------------------");
+		numCliente =numCliente + 1;
+		System.out.println("Cliente " + numCliente);
+		System.out.println("---------------------------------");
+		System.out.println("Nombre: " + cli.getNombre());
+		System.out.println("Apellidos: " + cli.getApellido1() + " " + cli.getApellido2());
+		System.out.println("Número de móvil: " + cli.getMovil());
+		System.out.println("Email: " + cli.getEmail());
+		System.out.println("");
+		System.out.println("");
+	}
+	
+}
+
+}

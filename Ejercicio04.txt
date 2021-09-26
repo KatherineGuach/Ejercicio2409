@@ -1,0 +1,74 @@
+//EJERCICIO 4: 
+//Crear una clase Object y comentarla
+
+package ejercicio04; //Esto indica el paquete dentro del cual está la clase que se va a crear
+
+public class Object { //Esta es una clase Padre, de la cual las subclases hijo van a heredar sus propiedades
+	/**	
+    *A continuación se indican los atributos o variables de la clase Padre, indicando
+    *qué tipos de datos son (primitivos o referencia (String)) y se privatizan.
+	*Al privatizarlos, no se puede acceder a ellos desde fuera de la clase en la que han sido definidos.
+	*/
+	private String atri1; //Este referencia un String
+	private int atri2; //Este tipo es primitivo
+	private float atri3; //Este también es primitivo
+	
+	/**
+    *Después se crean los constructores, que son los métodos especiales de la clase
+    *que se llaman automáticamente cuando se declar un objeto de esa clase. Los constructores
+    *llevan el mismo nombre que la clase en la que son creados. Se pueden hacer tantos constructores como combinaciones
+    *de parámetros haya. Hay 2 tipos:
+	*/
+	//Constructor sin parámetros: no contiene ningún parámetro. Si se accede a la clase usando
+	//este método, se deben inicializar los parámetros al llamarlo.
+	public Object() {
+		super(); //Por defecto al crear el constructor con comandos
+	}
+	
+	//Constructor con parámetros: contiene los atributos antes definidos. Se colocan en el orden en que han sido definidos
+	public Object(String atri1, int atri2, float atri3) {
+		super();
+		this.atri1 = atri1; //Esto indica: this.atri1 la variable atri1 es de "this" esta clase. Mientras que el segundo atri1 indica la variable local 
+		this.atri2 = atri2;
+		this.atri3 = atri3;
+	}
+	
+	/**
+	 * Ahora se deben crear los geters y seters, que nos sirven para poder acceder a los datos de las variables o modificarlas.
+	 * som métodos públicos y se crean como getNombrevariable y setNombrevari (con la primera letra después del gety set en mayúscula).
+	 * Se crea un get y un set para cada una de las variables y en el orden en que han sido definidas.
+	 * Además, los get no deben indicar dentro de () el tipo ni nombre de la variable, mientras que los set sí.
+	 */
+	public String getAtri1() {
+		return atri1;
+	}
+
+	public void setAtri1(String atri1) {
+		this.atri1 = atri1;
+	}
+
+	public int getAtri2() {
+		return atri2;
+	}
+
+	public void setAtri2(int atri2) {
+		this.atri2 = atri2;
+	}
+
+	public float getAtri3() {
+		return atri3;
+	}
+
+	public void setAtri3(float atri3) {
+		this.atri3 = atri3;
+	}
+	
+	/**
+	 *Por último, se crean los métodos que queramos para esta clase. 
+	 *Se crean como públicos. public void nombreDelMetodo()
+	*/
+	public void metodoObject() {
+		System.out.println("Este método imprimirá por pantalla los atributos de la clase Object: " + atri1 + ", " + atri2 + ", " + atri3);
+	}
+	
+}

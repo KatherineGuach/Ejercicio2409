@@ -1,0 +1,69 @@
+package ejercicio07;
+
+import java.util.HashMap;
+import java.util.Scanner;
+
+//EJERCICIO 7:
+//Utilizando HashMap para ingresar al menos 5 países con sus respectivas capitales luego mostrar por pantalla. 
+//Y me de la opción se buscar valor según Clave desplegada por pantalla
+
+public class Ejercicio07 {
+	
+	public static void main(String[] args) {
+		
+		Scanner teclado = new Scanner(System.in);
+		//HashMap va a contener clave de tipo string y valor de tipo string
+		HashMap<String,String> paisCapital = new HashMap<String,String>();
+		
+		//Agregamos los países y sus respectivas capitales
+		//Clave=País y Valor=Capital
+		paisCapital.put("Armenia","Ereván");
+		paisCapital.put("Azerbaiyán","Bakú");
+		paisCapital.put("Ecuador","Quito");
+		paisCapital.put("Guyana", "Georgetown");
+		paisCapital.put("Irlanda","Dublín");
+		paisCapital.put("Kenia", "Nairobi");
+		paisCapital.put("Letonia","Riga");	
+		paisCapital.put("Montenegro","Podgorica");
+		paisCapital.put("Suiza","Berna");
+		paisCapital.put("Zambia", "Lusaka");
+		
+		System.out.println("prueba" + paisCapital.get("Suiza"));
+		
+		//Devolvemos por pantalla los países ingresados y sus respectivas capitales
+		for (String i : paisCapital.keySet()) {
+			System.out.println("País: " + i);
+			System.out.println("Capital: " + paisCapital.get(i));
+			System.out.println("");
+		}
+		
+		
+		int buscar;
+		System.out.println("¿Desea buscar la capital de algún país?");
+		System.out.println("Pulse 1 si lo desea. Pulse 0, en caso contrario.");
+		buscar = teclado.nextInt();
+		
+		while (buscar == 1) {
+			for (String i : paisCapital.keySet()) {
+				System.out.println("Clave: " + i);
+			}
+			System.out.println("");
+			System.out.println("Elija la clave del país cuya capital desee buscar.");
+			String clave = teclado.next();
+			System.out.println("");
+			System.out.println("Capital: " + paisCapital.get(clave));
+			System.out.println("");
+			System.out.println("¿Desea hacer una nueva búsqueda?");
+			System.out.println("Pulse 1 si lo desea. Pulse 0, en caso contrario.");
+			buscar = teclado.nextInt();
+			
+			if (buscar == 0)
+				System.out.println("-----------------");
+				System.out.println("Fin de búsqueda");
+		}
+		
+		teclado.close();
+		
+	}
+
+}
